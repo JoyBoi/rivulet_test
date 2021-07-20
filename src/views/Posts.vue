@@ -2,14 +2,14 @@
   <div>
     <h3>Add Post:</h3>
     <form @submit.prevent="onSubmit">
-      <label>Title</label>
+      <label>Title:</label>
       <input
         type="text"
         id="newpost"
         v-model="newPost.title"
         placeholder="Post Title"
         autocomplete="off"
-      /><label>Body</label>
+      /><label>Body:</label>
       <input
         type="text"
         id="newpost"
@@ -30,17 +30,18 @@
         </span>
         <span>
           <button @click="deletePost(Post)">Delete</button>
+          <br />
         </span>
         <span v-if="Post.userId === 11">
           <form @submit.prevent="editPost(Post)">
-            <label>Title</label>
+            <label>Title:</label>
             <input
               type="text"
               id="newpost"
               v-model="editData.title"
               placeholder="Post Title"
               autocomplete="off"
-            /><label>Body</label>
+            /><label>Body:</label>
             <input
               type="text"
               id="newpost"
@@ -114,6 +115,18 @@ h2,
 h3,
 h4 p {
   margin: 8px;
+  padding: 5px;
+}
+span {
+  margin: 4px;
+  padding: 6px;
+}
+label {
+  margin: 4px;
+  padding: 4px;
+}
+button {
+  margin: 5px;
   padding: 5px;
 }
 ul {

@@ -39,6 +39,10 @@ body {
   padding: 0;
   width: 100%;
 }
+button {
+  margin: 5px;
+  padding: 5px;
+}
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

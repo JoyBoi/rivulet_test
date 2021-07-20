@@ -12,14 +12,14 @@
     <br />
     <h3>Add Comments:</h3>
     <form class="formstyle" @submit.prevent="onSubmit">
-      <label>Name</label>
+      <label>Name:</label>
       <input
         type="text"
         id="newpost"
         v-model="newComment.name"
         placeholder="Comment name"
         autocomplete="off"
-      /><label>Body</label>
+      /><label>Body:</label>
       <input
         type="text"
         id="newpost"
@@ -74,8 +74,16 @@ p {
   margin: 8px;
   padding: 5px;
 }
-form > * {
-  margin: 10px;
+span {
+  margin: 4px;
+  padding: 6px;
+}
+label {
+  margin: 4px;
+  padding: 4px;
+}
+button {
+  margin: 5px;
   padding: 5px;
 }
 ul {
