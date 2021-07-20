@@ -23,7 +23,11 @@
     <h3>Posts:</h3>
     <ul>
       <li v-for="Post in getPosts" :key="Post.id">
-        <span @click.prevent="postClicked(Post)"> {{ Post.title }} </span>
+        <span @click.prevent="postClicked(Post)">
+          <h4>{{ Post.title }}</h4>
+          <p>{{ Post.body }}</p>
+          <br />
+        </span>
         <span>
           <button @click="deletePost(Post)">Delete</button>
         </span>
@@ -108,7 +112,7 @@ export default {
 h1,
 h2,
 h3,
-p {
+h4 p {
   margin: 8px;
   padding: 5px;
 }
