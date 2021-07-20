@@ -56,6 +56,8 @@ export default {
   methods: {
     onSubmit() {
       this.$store.commit("addComments", this.newComment);
+      this.newComment.name = "";
+      this.newComment.body = "";
     },
   },
   mounted() {

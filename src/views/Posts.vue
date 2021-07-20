@@ -85,6 +85,8 @@ export default {
     },
     onSubmit() {
       this.$store.commit("addPosts", this.newPost);
+      this.newPost.title = "";
+      this.newPost.body = "";
     },
     deletePost(post) {
       console.log(post);
@@ -92,6 +94,8 @@ export default {
     },
     editPost(post) {
       this.$store.commit("editPost", { ...this.editData, id: post.id });
+      this.editData.title = "";
+      this.editData.body = "";
     },
   },
   mounted() {
