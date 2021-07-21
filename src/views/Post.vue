@@ -3,7 +3,7 @@
     <h2>{{ getPostsById.title }}</h2>
     <p>{{ getPostsById.body }}</p>
     <br />
-    <span v-if="getPostsById.userId === 11">
+    <span v-if="getPostsById.userId === 11 && isLoggedIn">
       <h3>Edit Post:</h3>
       <form @submit.prevent="editPost">
         <label>Title:</label>
@@ -32,25 +32,27 @@
       </li>
     </ul>
     <br />
-    <h3>Add Comments:</h3>
-    <form class="formstyle" @submit.prevent="onSubmit">
-      <label>Name:</label>
-      <input
-        type="text"
-        id="newpost"
-        v-model="newComment.name"
-        placeholder="Comment name"
-        autocomplete="off"
-      /><label>Body:</label>
-      <input
-        type="text"
-        id="newpost"
-        v-model="newComment.body"
-        placeholder="Comment Body"
-        autocomplete="off"
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <span v-if="isLoggedIn">
+      <h3>Add Comments:</h3>
+      <form class="formstyle" @submit.prevent="onSubmit">
+        <label>Name:</label>
+        <input
+          type="text"
+          id="newpost"
+          v-model="newComment.name"
+          placeholder="Comment name"
+          autocomplete="off"
+        /><label>Body:</label>
+        <input
+          type="text"
+          id="newpost"
+          v-model="newComment.body"
+          placeholder="Comment Body"
+          autocomplete="off"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </span>
   </div>
 </template>
 
@@ -96,7 +98,7 @@ export default {
     },
   },
   mounted() {
-    !this.isLoggedIn ? this.$router.replace("/") : null;
+    !this.getPostsById.title ? this.$router.replace("/") : null;
   },
 };
 </script>

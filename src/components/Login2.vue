@@ -19,6 +19,7 @@
             autocomplete="off"
           />
           <button type="submit">Log in</button>
+          <button @click="noLogin">Continue</button>
         </form>
       </div>
     </div>
@@ -26,6 +27,7 @@
 </template>
 
 <script>
+// import{mapGetters} from "vuex";
 export default {
   data() {
     return {
@@ -34,6 +36,11 @@ export default {
       },
     };
   },
+  // computed:{
+  //   ...mapGetters({
+  //     isLoggedIn: "isLoggedIn",
+  //   })
+  // },
   methods: {
     async onSubmit(event) {
       event.preventDefault();
@@ -44,6 +51,18 @@ export default {
       } else {
         alert("provide valid id");
       }
+    },
+    async noLogin(event) {
+      event.preventDefault();
+      // if (this.login.email) {
+      //   await this.$store.dispatch("logIn", this.login.email);
+      //   await this.$store.dispatch("getPostsFromAPI");
+      //   this.$router.push({ name: "Posts" });
+      // } else {
+      //   alert("provide valid id");
+      // }
+      await this.$store.dispatch("getPostsFromAPI");
+      this.$router.push({ name: "Posts" });
     },
   },
 };

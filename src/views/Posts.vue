@@ -1,24 +1,26 @@
 <template>
   <div>
-    <h3>Add Post:</h3>
-    <form @submit.prevent="onSubmit">
-      <label>Title:</label>
-      <input
-        type="text"
-        id="newpost"
-        v-model="newPost.title"
-        placeholder="Post Title"
-        autocomplete="off"
-      /><label>Body:</label>
-      <input
-        type="text"
-        id="newpost"
-        v-model="newPost.body"
-        placeholder="Post Body"
-        autocomplete="off"
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <span v-if="isLoggedIn">
+      <h3>Add Post:</h3>
+      <form @submit.prevent="onSubmit">
+        <label>Title:</label>
+        <input
+          type="text"
+          id="newpost"
+          v-model="newPost.title"
+          placeholder="Post Title"
+          autocomplete="off"
+        /><label>Body:</label>
+        <input
+          type="text"
+          id="newpost"
+          v-model="newPost.body"
+          placeholder="Post Body"
+          autocomplete="off"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </span>
     <br />
     <h3>Posts:</h3>
     <ul>
@@ -106,7 +108,7 @@ export default {
     // },
   },
   mounted() {
-    !this.isLoggedIn ? this.$router.replace("/") : null;
+    !this.getPosts ? this.$router.replace("/") : null;
   },
 };
 </script>
