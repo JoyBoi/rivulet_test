@@ -74,6 +74,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      getPosts: "getPosts",
       getComments: "getComments",
       isLoggedIn: "isLoggedIn",
     }),
@@ -100,7 +101,7 @@ export default {
     },
   },
   mounted() {
-    !this.getPostsById.title ? this.$router.replace("/") : null;
+    !this.getPosts[0] ? this.$router.replace("/") : null;
   },
 };
 </script>
