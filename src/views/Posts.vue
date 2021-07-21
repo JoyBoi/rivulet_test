@@ -28,11 +28,11 @@
           <p>{{ Post.body }}</p>
           <br />
         </span>
-        <span>
+        <span v-if="Post.userId === 11">
           <button @click="deletePost(Post)">Delete</button>
           <br />
         </span>
-        <span v-if="Post.userId === 11">
+        <!-- <span v-if="Post.userId === 11">
           <form @submit.prevent="editPost(Post)">
             <label>Title:</label>
             <input
@@ -51,7 +51,7 @@
             />
             <button type="submit">Edit</button>
           </form>
-        </span>
+        </span> -->
       </li>
     </ul>
   </div>
@@ -68,10 +68,10 @@ export default {
         body: "",
         userId: 11,
       },
-      editData: {
-        title: "",
-        body: "",
-      },
+      // editData: {
+      //   title: "",
+      //   body: "",
+      // },
     };
   },
   computed: {
@@ -96,12 +96,14 @@ export default {
     deletePost(post) {
       console.log(post);
       this.$store.commit("deletePost", post.id);
+      alert("The post Has been Deleted");
     },
-    editPost(post) {
-      this.$store.commit("editPost", { ...this.editData, id: post.id });
-      this.editData.title = "";
-      this.editData.body = "";
-    },
+    // editPost(post) {
+    //   this.$store.commit("editPost", { ...this.editData, id: post.id });
+    //   alert("The post Has been Updated");
+    //   this.editData.title = "";
+    //   this.editData.body = "";
+    // },
   },
   mounted() {
     !this.isLoggedIn ? this.$router.replace("/") : null;

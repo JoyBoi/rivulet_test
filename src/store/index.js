@@ -42,9 +42,9 @@ export default new Vuex.Store({
         },
 
         deletePost: (state, payload) => {
-            console.log(payload);
+            // console.log(payload);
             let index = state.posts.findIndex((post) => post.id === payload);
-            console.log(index);
+            // console.log(index);
             state.posts.splice(index, 1);
         },
 
@@ -106,7 +106,9 @@ export default new Vuex.Store({
     getters: {
         user: (state) => state.user,
         isLoggedIn: (state) => state.user.email !== "",
-        getPosts: (state) => state.posts,
+        getPosts: (state) => {
+            return state.posts.slice().reverse();
+        },
         getPostsById: (state) => (postId) => {
             let index = state.posts.findIndex((post) => post.id === postId);
             return state.posts[index];

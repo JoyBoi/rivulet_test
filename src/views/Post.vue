@@ -3,6 +3,28 @@
     <h2>{{ getPostsById.title }}</h2>
     <p>{{ getPostsById.body }}</p>
     <br />
+    <span v-if="getPostsById.userId === 11">
+      <h3>Edit Post:</h3>
+      <form @submit.prevent="editPost">
+        <label>Title:</label>
+        <input
+          type="text"
+          id="newpost"
+          v-model="editData.title"
+          placeholder="Post Title"
+          autocomplete="off"
+        /><label>Body:</label>
+        <input
+          type="text"
+          id="newpost"
+          v-model="editData.body"
+          placeholder="Post Body"
+          autocomplete="off"
+        />
+        <button type="submit">Edit</button>
+      </form>
+    </span>
+    <br />
     <h3>Comments:</h3>
     <ul>
       <li v-for="Comment in getComments" :key="Comment.id">
@@ -42,6 +64,10 @@ export default {
         body: "",
         postId: this.$route.params.id,
       },
+      editData: {
+        title: "",
+        body: "",
+      },
     };
   },
   computed: {
@@ -58,6 +84,15 @@ export default {
       this.$store.commit("addComments", this.newComment);
       this.newComment.name = "";
       this.newComment.body = "";
+    },
+    editPost() {
+      this.$store.commit("editPost", {
+        ...this.editData,
+        id: this.getPostsById.id,
+      });
+      alert("The post Has been Updated");
+      this.editData.title = "";
+      this.editData.body = "";
     },
   },
   mounted() {
