@@ -96,9 +96,11 @@ export default {
       this.newPost.body = "";
     },
     deletePost(post) {
-      console.log(post);
-      this.$store.commit("deletePost", post.id);
-      alert("The post Has been Deleted");
+      if (confirm("Do you really want to delete the post?")) {
+        // console.log(post);
+        this.$store.commit("deletePost", post.id);
+        alert("The post Has been Deleted");
+      }
     },
     // editPost(post) {
     //   this.$store.commit("editPost", { ...this.editData, id: post.id });

@@ -19,7 +19,7 @@
             autocomplete="off"
           />
           <button type="submit">Log in</button>
-          <button @click="noLogin">Continue</button>
+          <button @click="noLogin">Continue as guest</button>
         </form>
       </div>
     </div>

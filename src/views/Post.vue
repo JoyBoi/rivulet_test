@@ -88,11 +88,13 @@ export default {
       this.newComment.body = "";
     },
     editPost() {
-      this.$store.commit("editPost", {
-        ...this.editData,
-        id: this.getPostsById.id,
-      });
-      alert("The post Has been Updated");
+      if (confirm("Do you really want to change the post?")) {
+        this.$store.commit("editPost", {
+          ...this.editData,
+          id: this.getPostsById.id,
+        });
+        alert("The post Has been Updated");
+      }
       this.editData.title = "";
       this.editData.body = "";
     },
